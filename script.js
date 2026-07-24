@@ -230,14 +230,93 @@ updatePreview();
 
 };
 
-downloadBtn.addEventListener(
-"click",
-()=>{
+downloadBtn.addEventListener("click", () => {
 
-alert(
-"현재 버전에서는 HTML 다운로드 기능이 간단 버전입니다."
+const html = `
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${titleInput.value}</title>
+
+<style>
+body{
+font-family:sans-serif;
+background:#f2f2f2;
+padding:20px;
+}
+
+.card{
+max-width:430px;
+margin:auto;
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.banner{
+width:100%;
+display:block;
+}
+
+.content{
+padding:20px;
+}
+
+.button{
+display:block;
+padding:15px;
+background:#FEE500;
+text-align:center;
+text-decoration:none;
+font-weight:bold;
+color:black;
+border-radius:12px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+<img class="banner" src="${previewBanner.src}">
+
+<div class="content">
+
+<h2>${titleInput.value}</h2>
+
+<p>${descInput.value}</p>
+
+<a class="button"
+href="${linkInput.value}">
+${buttonInput.value}
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
+`;
+
+const blob = new Blob(
+[html],
+{type:"text/html"}
 );
 
-});
+const a =
+document.createElement("a");
 
-updatePreview();
+a.href =
+URL.createObjectURL(blob);
+
+a.download =
+"card.html";
+
+a.click();
+
+});
