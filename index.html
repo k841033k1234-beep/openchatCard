@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오픈채팅 홍보카드 생성기</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1 class="main-title">
+📢 오픈채팅 홍보카드 생성기
+</h1>
+
+<div class="editor">
+
+<h2>카드 설정</h2>
+
+<label>배너 이미지</label>
+<input type="file" id="bannerInput" accept="image/*">
+
+<label>프로필 이미지</label>
+<input type="file" id="profileInput" accept="image/*">
+
+<label>프로필 이름</label>
+<input type="text" id="profileNameInput" value="RIO">
+
+<label>제목</label>
+<input type="text" id="titleInput" value="💜다장르 소통방💜">
+
+<label>소개글</label>
+<textarea id="descInput">😘 어떤 분이든 환영 😘
+부방 모집중!!!</textarea>
+
+<label>좋아요 수</label>
+<input type="number" id="likeInput" value="9999">
+
+<label>댓글 수</label>
+<input type="number" id="commentInput" value="999">
+
+<label>공유 수</label>
+<input type="number" id="shareInput" value="158">
+
+<label>버튼 이름</label>
+<input type="text" id="buttonInput" value="바로가기">
+
+<label>오픈채팅 링크</label>
+<input type="text" id="linkInput" value="https://open.kakao.com/">
+
+<button id="downloadBtn">
+📥 HTML 다운로드
+</button>
+
+</div>
+
+<div class="preview-area">
+
+<div class="card">
+
+<div class="top">
+<div class="profile">
+<img id="previewProfile" class="profile-image" src="https://via.placeholder.com/80">
+<div id="previewProfileName" class="profile-name">RIO</div>
+</div>
+</div>
+
+<div class="banner-wrap">
+<img id="previewBanner" class="banner" src="https://via.placeholder.com/800x450">
+<div class="banner-gradient"></div>
+</div>
+
+<div class="content">
+<h2 id="previewTitle">💜다장르 소통방💜</h2>
+
+<p id="previewDesc">
+😘 어떤 분이든 환영 😘
+부방 모집중!!!
+</p>
+
+<div class="stats">
+<span id="previewLike">❤ 9999</span>
+<span id="previewComment">💬 999</span>
+<span id="previewShare">🔗 158</span>
+</div>
+
+<a id="previewButton" class="join-btn" href="#">
+바로가기
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
