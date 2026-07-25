@@ -237,23 +237,53 @@ const html = `
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>${titleInput.value}</title>
 
 <style>
+
 body{
-font-family:sans-serif;
-background:#f2f2f2;
+margin:0;
 padding:20px;
+background:#747b86;
+font-family:sans-serif;
 }
 
 .card{
 max-width:430px;
 margin:auto;
 background:white;
-border-radius:20px;
+border-radius:24px;
 overflow:hidden;
-box-shadow:0 5px 20px rgba(0,0,0,.15);
+box-shadow:
+0 2px 6px rgba(0,0,0,.08),
+0 12px 24px rgba(0,0,0,.12);
+}
+
+.top{
+background:#5e6671;
+padding:16px;
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.profile img{
+width:54px;
+height:54px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid white;
+}
+
+.profile-name{
+color:white;
+font-weight:bold;
+font-size:18px;
 }
 
 .banner{
@@ -262,27 +292,63 @@ display:block;
 }
 
 .content{
-padding:20px;
+padding:24px;
+}
+
+.content h2{
+font-size:30px;
+font-weight:800;
+margin-bottom:16px;
+}
+
+.content p{
+white-space:pre-line;
+line-height:1.7;
+color:#666;
+}
+
+.stats{
+display:flex;
+gap:18px;
+margin:20px 0;
+color:#888;
+font-weight:bold;
 }
 
 .button{
 display:block;
-padding:15px;
-background:#FEE500;
+padding:18px;
 text-align:center;
+background:#FEE500;
 text-decoration:none;
-font-weight:bold;
 color:black;
+font-weight:bold;
 border-radius:12px;
+font-size:20px;
 }
-</style>
 
+</style>
 </head>
 <body>
 
 <div class="card">
 
-<img class="banner" src="${previewBanner.src}">
+<div class="top">
+
+<div class="profile">
+
+<img src="${previewProfile.src}">
+
+<div class="profile-name">
+${profileNameInput.value}
+</div>
+
+</div>
+
+</div>
+
+<img class="banner"
+src="${previewBanner.src}">
 
 <div class="content">
 
@@ -290,7 +356,18 @@ border-radius:12px;
 
 <p>${descInput.value}</p>
 
-<a class="button"
+<div class="stats">
+
+<span>❤ ${likeInput.value}</span>
+
+<span>💬 ${commentInput.value}</span>
+
+<span>🔗 ${shareInput.value}</span>
+
+</div>
+
+<a
+class="button"
 href="${linkInput.value}">
 ${buttonInput.value}
 </a>
@@ -308,15 +385,18 @@ const blob = new Blob(
 {type:"text/html"}
 );
 
-const a =
-document.createElement("a");
+const a = document.createElement("a");
 
-a.href =
-URL.createObjectURL(blob);
+a.href = URL.createObjectURL(blob);
 
-a.download =
-"card.html";
+a.download = "OpenChatCard.html";
+
+document.body.appendChild(a);
 
 a.click();
+
+document.body.removeChild(a);
+
+URL.revokeObjectURL(a.href);
 
 });
